@@ -1,0 +1,54 @@
+  11  clear
+  12  ldd /bin/ls | grep selinux
+  13  ls -l /etc/selinux/
+  14  ls -l /etc/selinux/targeted/
+  15  ld -Z
+  16  id -Z
+  17  ls -Z /etc/passwd /etc/group /etc/shadow
+  18  ls -Z /etc/login.defs /etc/sudoers
+  19  ls -Z /usr/bin/passwd 
+  20  ls -Z /usr/sbin/useradd
+  21  getfattr -n security.selinux /etc/passwd
+  22  ps Zaux
+  23  ls /proc/$$/attr
+  24  ps Z $(pgrep passwd)
+  25  netstat -tnlpZ
+  26  sestatus
+  27 getenforce 
+  28  cat /sys/fs/selinux/enforce 
+  29  nano /etc/selinux/config 
+  30  sudo nano /etc/selinux/config 
+  31  reboot
+  32  sudo nano /etc/selinux/config 
+  33  reboot
+  34  getsebool -a | grep httpd
+  35  sudo nano /etc/selinux/config 
+  36  reboot
+  37  getsebool -a | grep httpd
+  38  sudo seinfo
+  39  sudo su
+  40  grep 'httpd_.*_t' /etc/selinux/targeted/contexts/files/file_contexts
+  41  semanage fcontext -l
+  42  sudo semanage fcontext -l
+  43  mkdir test
+  44  > file
+  45  ls -Z
+  46  sesearch -T -s httpd_t -t var_log_t
+  47  sesearch -T -s httpd_t -t tmp_t
+  48  sesearch --allow --source passwd_t --target shadow_t --class file
+  49  sudo sesearch -A -s passwd_t -t passwd_exec_t -c file
+  50  sudo sesearch -A -s unconfined_t -t passwd_exec_t -c file
+  51  sudo sesearch -A -s unconfined_t -t passwd_t -c process
+  52  sesearch --type_trans -s unconfined_t -t passwd_exec_t
+  53 cd bos_lab/
+  54  ls -la
+  55  history > selinux.txt
+  56  nanj selinux.txt 
+  57  nano selinux.txt 
+  58   cat selinux.txt | tail +161
+  59  cat selinux.txt | tail +161
+  60  cat selinux.txt | tail -n +161
+  61  cat selinux.txt 
+  62  cat selinux.txt | tail -n +161 > selinux.txt
+  63  cat selinux.txt 
+  64  history > Selinux.txt
